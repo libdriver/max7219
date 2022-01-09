@@ -1,10 +1,12 @@
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+
 <div align=center>
 <img src="/doc/image/logo.png"/>
 </div>
 
 ## LibDriver MAX7219
 
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/max7219/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 MAX7219/MAX7221為緊湊的串行輸入/輸出共陰極顯示驅動器，用於連接微處理器(µP)與8位7段LED數碼管顯示器、條形圖顯示器或64個獨立的LED。器件內置BCD B碼譯碼器、多路復用掃描電路、段和位驅動器以及存儲每位數字的8x8靜態RAM。只需一個外部電阻即可設置所有LED的段電流。 MAX7221兼容於SPI™、QSPI™以及MICROWIRE™接口，段驅動器帶有擺率限制，以降低EMI。便利的4線串行接口可以連接所有通用µP。可對每位數字單獨尋址和更新，無需重新寫入整個顯示器。 MAX7219/MAX7221還允許用戶為每位數字選擇B碼譯碼或非譯碼方式。器件具有150µA低功耗關斷模式、模擬和數字亮度控制、允許用戶顯示1至8位數字的掃描限制寄存器以及強制點亮所有LED的測試模式。
 
