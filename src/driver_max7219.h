@@ -60,7 +60,9 @@ extern "C"{
 /**
  * @brief max7219 max cascade size definition
  */
-#define MAX7219_MAX_CASCADE_SIZE 128        /**< 128 cascade */
+#ifndef MAX7219_MAX_CASCADE_SIZE
+    #define MAX7219_MAX_CASCADE_SIZE 128        /**< 128 cascade */
+#endif
 
 /**
  * @}
