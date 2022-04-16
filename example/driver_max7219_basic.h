@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_MAX7219_BASIC_H_
-#define _DRIVER_MAX7219_BASIC_H_
+#ifndef DRIVER_MAX7219_BASIC_H
+#define DRIVER_MAX7219_BASIC_H
 
 #include "driver_max7219_interface.h"
 

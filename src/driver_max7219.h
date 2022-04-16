@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_MAX7219_H_
-#define _DRIVER_MAX7219_H_
+#ifndef DRIVER_MAX7219_H
+#define DRIVER_MAX7219_H
 
 #include <stdio.h>
 #include <stdint.h>
@@ -274,7 +274,7 @@ typedef struct max7219_handle_s
     uint8_t (*spi_write_cmd)(uint8_t *buf, uint16_t len);                 /**< point to a spi_write_cmd function address */
     uint8_t (*spi_write)(uint8_t reg, uint8_t *buf, uint16_t len);        /**< point to a spi_write function address */
     void (*delay_ms)(uint32_t us);                                        /**< point to a delay_ms function address */
-    uint16_t (*debug_print)(char *fmt, ...);                              /**< point to a debug_print function address */
+    void (*debug_print)(const char *const fmt, ...);                      /**< point to a debug_print function address */
     uint8_t buf[MAX7219_MAX_CASCADE_SIZE * 2];                            /**< cascade buffer */
     uint8_t inited;                                                       /**< inited flag */
 } max7219_handle_t;

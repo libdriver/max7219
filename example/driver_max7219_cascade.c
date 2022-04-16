@@ -50,8 +50,8 @@ uint8_t g_matrix[MATRIX_CASCADE_LENGTH][8];                        /**< global m
  */
 uint8_t max7219_cascade_init(void)
 {
-    volatile uint8_t res; 
-    volatile uint32_t i;
+    uint8_t res; 
+    uint32_t i;
     
     /* link functions */
     DRIVER_MAX7219_LINK_INIT(&gs_handle, max7219_handle_t);
@@ -64,7 +64,7 @@ uint8_t max7219_cascade_init(void)
     
     /* max7219 init */
     res = max7219_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: init failed.\n");
         
@@ -78,10 +78,10 @@ uint8_t max7219_cascade_init(void)
         gs_cascade[i].data = MAX7219_CASCADE_DEFAULT_DECODE;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set cascade failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -93,10 +93,10 @@ uint8_t max7219_cascade_init(void)
         gs_cascade[i].data = MAX7219_CASCADE_DEFAULT_MODE;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set cascade failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -108,10 +108,10 @@ uint8_t max7219_cascade_init(void)
         gs_cascade[i].data = MAX7219_CASCADE_DEFAULT_TEST_MODE;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set cascade failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -123,10 +123,10 @@ uint8_t max7219_cascade_init(void)
         gs_cascade[i].data = MAX7219_CASCADE_DEFAULT_INTENSITY;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set cascade failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -138,10 +138,10 @@ uint8_t max7219_cascade_init(void)
         gs_cascade[i].data = MAX7219_CASCADE_DEFAULT_SCAN_LIMIT;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set cascade failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -158,8 +158,8 @@ uint8_t max7219_cascade_init(void)
  */
 uint8_t max7219_cascade_update(void)
 {
-    volatile uint8_t res;
-    volatile uint32_t i, j;
+    uint8_t res;
+    uint32_t i, j;
     
     for (j = 0; j < 8; j++)
     {
@@ -171,7 +171,7 @@ uint8_t max7219_cascade_update(void)
         
         /* set cascade */
         res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_LENGTH);
-        if (res)
+        if (res != 0)
         {
             max7219_interface_debug_print("max7219: set display test off failed.\n");
             
@@ -191,8 +191,8 @@ uint8_t max7219_cascade_update(void)
  */
 uint8_t max7219_cascade_deinit(void)
 {
-    volatile uint8_t res; 
-    volatile uint32_t i;
+    uint8_t res; 
+    uint32_t i;
     
     /* max7219 set default mode */
     for (i = 0; i < MATRIX_CASCADE_LENGTH; i++)
@@ -201,14 +201,14 @@ uint8_t max7219_cascade_deinit(void)
         gs_cascade[i].data = MAX7219_MODE_SHUT_DOWN;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set cascade failed.\n");
         
         return 1;
     }
     res = max7219_deinit(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: deinit failed.\n");
         

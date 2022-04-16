@@ -89,8 +89,8 @@ $(document).ready(function(){initNavTree('driver__max7219__interface_8h_source.h
 </div><!--header-->
 <div class="contents">
 <a href="driver__max7219__interface_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#ifndef _DRIVER_MAX7219_INTERFACE_H_</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define _DRIVER_MAX7219_INTERFACE_H_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#ifndef DRIVER_MAX7219_INTERFACE_H</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define DRIVER_MAX7219_INTERFACE_H</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="driver__max7219_8h.html">driver_max7219.h</a>&quot;</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
@@ -108,20 +108,20 @@ $(document).ready(function(){initNavTree('driver__max7219__interface_8h_source.h
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__max7219__interface__driver.html#ga9c9afa8b37478af650f3f81591c02761">max7219_interface_delay_ms</a>(uint32_t ms);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;uint16_t <a class="code" href="group__max7219__interface__driver.html#ga7c7cc3f7bb7599238a64838ac569083f">max7219_interface_debug_print</a>(<span class="keywordtype">char</span> *fmt, ...);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__max7219__interface__driver.html#gac5a6315dfa6ab9ac85bd015c89bf4c5e">max7219_interface_debug_print</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> fmt, ...);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="adriver__max7219_8h_html"><div class="ttname"><a href="driver__max7219_8h.html">driver_max7219.h</a></div><div class="ttdoc">driver max7219 header file</div></div>
 <div class="ttc" id="agroup__max7219__interface__driver_html_ga0a0184800ae9bc98a87175a3c788ddef"><div class="ttname"><a href="group__max7219__interface__driver.html#ga0a0184800ae9bc98a87175a3c788ddef">max7219_interface_spi_init</a></div><div class="ttdeci">uint8_t max7219_interface_spi_init(void)</div><div class="ttdoc">interface spi bus init</div><div class="ttdef"><b>Definition:</b> <a href="driver__max7219__interface__template_8c_source.html#l00047">driver_max7219_interface_template.c:47</a></div></div>
 <div class="ttc" id="agroup__max7219__interface__driver_html_ga27666673fe8d3828158c16a401c455f7"><div class="ttname"><a href="group__max7219__interface__driver.html#ga27666673fe8d3828158c16a401c455f7">max7219_interface_spi_deinit</a></div><div class="ttdeci">uint8_t max7219_interface_spi_deinit(void)</div><div class="ttdoc">interface spi bus deinit</div><div class="ttdef"><b>Definition:</b> <a href="driver__max7219__interface__template_8c_source.html#l00059">driver_max7219_interface_template.c:59</a></div></div>
 <div class="ttc" id="agroup__max7219__interface__driver_html_ga3a74553c8b80753b0fce1f20cb9d4f4c"><div class="ttname"><a href="group__max7219__interface__driver.html#ga3a74553c8b80753b0fce1f20cb9d4f4c">max7219_interface_spi_write</a></div><div class="ttdeci">uint8_t max7219_interface_spi_write(uint8_t reg, uint8_t *buf, uint16_t len)</div><div class="ttdoc">interface spi bus write</div><div class="ttdef"><b>Definition:</b> <a href="driver__max7219__interface__template_8c_source.html#l00088">driver_max7219_interface_template.c:88</a></div></div>
 <div class="ttc" id="agroup__max7219__interface__driver_html_ga4ff1ce83d8ce12b8d28fc65b99bc1758"><div class="ttname"><a href="group__max7219__interface__driver.html#ga4ff1ce83d8ce12b8d28fc65b99bc1758">max7219_interface_spi_write_cmd</a></div><div class="ttdeci">uint8_t max7219_interface_spi_write_cmd(uint8_t *buf, uint16_t len)</div><div class="ttdoc">interface spi bus write command</div><div class="ttdef"><b>Definition:</b> <a href="driver__max7219__interface__template_8c_source.html#l00073">driver_max7219_interface_template.c:73</a></div></div>
-<div class="ttc" id="agroup__max7219__interface__driver_html_ga7c7cc3f7bb7599238a64838ac569083f"><div class="ttname"><a href="group__max7219__interface__driver.html#ga7c7cc3f7bb7599238a64838ac569083f">max7219_interface_debug_print</a></div><div class="ttdeci">uint16_t max7219_interface_debug_print(char *fmt,...)</div><div class="ttdoc">interface print format data</div><div class="ttdef"><b>Definition:</b> <a href="driver__max7219__interface__template_8c_source.html#l00109">driver_max7219_interface_template.c:109</a></div></div>
 <div class="ttc" id="agroup__max7219__interface__driver_html_ga9c9afa8b37478af650f3f81591c02761"><div class="ttname"><a href="group__max7219__interface__driver.html#ga9c9afa8b37478af650f3f81591c02761">max7219_interface_delay_ms</a></div><div class="ttdeci">void max7219_interface_delay_ms(uint32_t ms)</div><div class="ttdoc">interface delay ms</div><div class="ttdef"><b>Definition:</b> <a href="driver__max7219__interface__template_8c_source.html#l00098">driver_max7219_interface_template.c:98</a></div></div>
+<div class="ttc" id="agroup__max7219__interface__driver_html_gac5a6315dfa6ab9ac85bd015c89bf4c5e"><div class="ttname"><a href="group__max7219__interface__driver.html#gac5a6315dfa6ab9ac85bd015c89bf4c5e">max7219_interface_debug_print</a></div><div class="ttdeci">void max7219_interface_debug_print(const char *const fmt,...)</div><div class="ttdoc">interface print format data</div><div class="ttdef"><b>Definition:</b> <a href="driver__max7219__interface__template_8c_source.html#l00108">driver_max7219_interface_template.c:108</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -50,8 +50,8 @@ static uint8_t gs_matrix[MATRIX_CASCADE_TEST_LENGTH][8];                /**< glo
  */
 uint8_t max7219_matrix_cascade_test(void)
 {
-    volatile uint8_t res;
-    volatile uint32_t i, j;
+    uint8_t res;
+    uint32_t i, j;
     max7219_info_t info;
     
     /* link functions */
@@ -65,7 +65,7 @@ uint8_t max7219_matrix_cascade_test(void)
     
     /* max7219 info */
     res = max7219_info(&info);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: get info failed.\n");
        
@@ -90,7 +90,7 @@ uint8_t max7219_matrix_cascade_test(void)
     
     /* max7219 init */
     res = max7219_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: init failed.\n");
         
@@ -104,10 +104,10 @@ uint8_t max7219_matrix_cascade_test(void)
         gs_cascade[i].data = MAX7219_DECODE_CODEB_DIGITS_NONE;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set cascade failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -119,10 +119,10 @@ uint8_t max7219_matrix_cascade_test(void)
         gs_cascade[i].data = MAX7219_INTENSITY_31_32;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set cascade failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -134,10 +134,10 @@ uint8_t max7219_matrix_cascade_test(void)
         gs_cascade[i].data = MAX7219_SCAN_LIMIT_DIGIT_0_7;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set cascade failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -149,10 +149,10 @@ uint8_t max7219_matrix_cascade_test(void)
         gs_cascade[i].data = MAX7219_DISPLAY_TEST_MODE_OFF;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display test off failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -164,10 +164,10 @@ uint8_t max7219_matrix_cascade_test(void)
         gs_cascade[i].data = MAX7219_MODE_NORMAL;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display test off failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -178,7 +178,7 @@ uint8_t max7219_matrix_cascade_test(void)
     {
         for (i = 0; i < MATRIX_CASCADE_TEST_LENGTH; i++)
         {
-            if (j % 2)
+            if ((j % 2) != 0)
             {
                 gs_matrix[i][j] = 0xFF;
             }
@@ -196,10 +196,10 @@ uint8_t max7219_matrix_cascade_test(void)
             gs_cascade[i].data = gs_matrix[i][j];
         }
         res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-        if (res)
+        if (res != 0)
         {
             max7219_interface_debug_print("max7219: set display test off failed.\n");
-            max7219_deinit(&gs_handle);
+            (void)max7219_deinit(&gs_handle);
             
             return 1;
         }
@@ -225,10 +225,10 @@ uint8_t max7219_matrix_cascade_test(void)
             gs_cascade[i].data = gs_matrix[i][j];
         }
         res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-        if (res)
+        if (res != 0)
         {
             max7219_interface_debug_print("max7219: set display test off failed.\n");
-            max7219_deinit(&gs_handle);
+            (void)max7219_deinit(&gs_handle);
             
             return 1;
         }
@@ -279,10 +279,10 @@ uint8_t max7219_matrix_cascade_test(void)
             gs_cascade[i].data = gs_matrix[i][j];
         }
         res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-        if (res)
+        if (res != 0)
         {
             max7219_interface_debug_print("max7219: set display test off failed.\n");
-            max7219_deinit(&gs_handle);
+            (void)max7219_deinit(&gs_handle);
             
             return 1;
         }
@@ -301,7 +301,7 @@ uint8_t max7219_matrix_cascade_test(void)
         }
         for (i = MATRIX_CASCADE_TEST_LENGTH/2; i < MATRIX_CASCADE_TEST_LENGTH; i++)
         {
-            if (j % 2)
+            if ((j % 2) != 0)
             {
                 gs_matrix[i][j] = 0xFF;
             }
@@ -319,10 +319,10 @@ uint8_t max7219_matrix_cascade_test(void)
             gs_cascade[i].data = gs_matrix[i][j];
         }
         res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-        if (res)
+        if (res != 0)
         {
             max7219_interface_debug_print("max7219: set display test off failed.\n");
-            max7219_deinit(&gs_handle);
+            (void)max7219_deinit(&gs_handle);
             
             return 1;
         }
@@ -339,17 +339,17 @@ uint8_t max7219_matrix_cascade_test(void)
         gs_cascade[i].data = MAX7219_MODE_SHUT_DOWN;
     }
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_TEST_LENGTH);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display test off failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     
     /* finish matrix cascade test */
     max7219_interface_debug_print("max7219: finish matrix cascade test.\n");
-    max7219_deinit(&gs_handle);
+    (void)max7219_deinit(&gs_handle);
     
     return 0;
 }

@@ -123,10 +123,10 @@ uint8_t max7219(uint8_t argc, char **argv)
             /* display test */
             if (strcmp("display", argv[2]) == 0)
             {
-                volatile uint8_t res;
+                uint8_t res;
                 
                 res = max7219_display_test();
-                if (res)
+                if (res != 0)
                 {
                     max7219_interface_debug_print("max7219: display test failed.\n");
                     
@@ -137,10 +137,10 @@ uint8_t max7219(uint8_t argc, char **argv)
             }
             else if (strcmp("matrix_cascade", argv[2]) == 0)
             {
-                volatile uint8_t res;
+                uint8_t res;
                 
                 res = max7219_matrix_cascade_test();
-                if (res)
+                if (res != 0)
                 {
                     max7219_interface_debug_print("max7219: matrix cascade failed.\n");
                     
@@ -169,12 +169,12 @@ uint8_t max7219(uint8_t argc, char **argv)
             /* basic test */
             if (strcmp("basic", argv[2]) == 0)
             {
-                volatile uint8_t res;
+                uint8_t res;
                 
                 if (strcmp("-init", argv[3]) == 0)
                 {
                     res = max7219_basic_init();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: basic init failed.\n");
                         
@@ -182,7 +182,7 @@ uint8_t max7219(uint8_t argc, char **argv)
                     }
                     max7219_interface_debug_print("max7219: init successful.\n");
                     res = max7219_interface_spi_deinit();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: basic deinit failed.\n");
                         
@@ -194,14 +194,14 @@ uint8_t max7219(uint8_t argc, char **argv)
                 else if (strcmp("-deinit", argv[3]) == 0)
                 {
                     res = max7219_basic_init();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: basic init failed.\n");
                         
                         return 1;
                     }
                     res = max7219_basic_deinit();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: basic deinit failed.\n");
                         
@@ -219,12 +219,12 @@ uint8_t max7219(uint8_t argc, char **argv)
             /* cascade test */
             else if (strcmp("cascade", argv[2]) == 0)
             {
-                volatile uint8_t res;
+                uint8_t res;
                 
                 if (strcmp("-init", argv[3]) == 0)
                 {
                     res = max7219_cascade_init();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: cascade init failed.\n");
                         
@@ -232,7 +232,7 @@ uint8_t max7219(uint8_t argc, char **argv)
                     }
                     max7219_interface_debug_print("max7219: init successful.\n");
                     res = max7219_interface_spi_deinit();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: basic deinit failed.\n");
                         
@@ -244,14 +244,14 @@ uint8_t max7219(uint8_t argc, char **argv)
                 else if (strcmp("-deinit", argv[3]) == 0)
                 {
                     res = max7219_cascade_init();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: cascade init failed.\n");
                         
                         return 1;
                     }
                     res = max7219_cascade_deinit();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: cascade deinit failed.\n");
                         
@@ -289,9 +289,9 @@ uint8_t max7219(uint8_t argc, char **argv)
             {
                 if (strcmp("-num", argv[3]) == 0)
                 {
-                    volatile uint8_t i;
-                    volatile uint8_t res;
-                    volatile uint32_t len = strlen(argv[4]);
+                    uint8_t i;
+                    uint8_t res;
+                    uint32_t len = strlen(argv[4]);
                     const max7219_no_decode_font_t display[] = {MAX7219_NO_DECODE_FONT_0, MAX7219_NO_DECODE_FONT_1,
                                                                 MAX7219_NO_DECODE_FONT_2, MAX7219_NO_DECODE_FONT_3,
                                                                 MAX7219_NO_DECODE_FONT_4, MAX7219_NO_DECODE_FONT_5,
@@ -299,7 +299,7 @@ uint8_t max7219(uint8_t argc, char **argv)
                                                                 MAX7219_NO_DECODE_FONT_8, MAX7219_NO_DECODE_FONT_9
                                                                };
                     res = max7219_basic_init();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: basic init failed.\n");
                         
@@ -307,14 +307,14 @@ uint8_t max7219(uint8_t argc, char **argv)
                     }
                     for (i = 0; i < 8; i++)
                     {
-                        volatile uint8_t s;
+                        uint8_t s;
                         
                         if (i < len)
                         {
                             s = argv[4][i] - '0';
                             s = (s > 9) ? 9 : s;
                             res = max7219_basic_set_display((max7219_digital_t)(i+1), display[s]);
-                            if (res)
+                            if (res != 0)
                             {
                                 max7219_interface_debug_print("max7219: set display failed.\n");
                                 
@@ -324,7 +324,7 @@ uint8_t max7219(uint8_t argc, char **argv)
                         else
                         {
                             res = max7219_basic_set_display((max7219_digital_t)(i+1), display[0]);
-                            if (res)
+                            if (res != 0)
                             {
                                 max7219_interface_debug_print("max7219: set display failed.\n");
                                 
@@ -334,7 +334,7 @@ uint8_t max7219(uint8_t argc, char **argv)
                     }
                     max7219_interface_debug_print("max7219: set display %s.\n", argv[4]);
                     res = max7219_interface_spi_deinit();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: basic deinit failed.\n");
                         
@@ -345,7 +345,7 @@ uint8_t max7219(uint8_t argc, char **argv)
                 }
                 else if (strcmp("-matrix", argv[3]) == 0)
                 {
-                    volatile uint8_t res;
+                    uint8_t res;
                     uint8_t matrix[8];
                     
                     if (strcmp("+", argv[4]) == 0)
@@ -391,21 +391,21 @@ uint8_t max7219(uint8_t argc, char **argv)
                         return 5;
                     }
                     res = max7219_basic_init();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: basic init failed.\n");
                         
                         return 1;
                     }
                     res = max7219_basic_set_matrix(matrix);
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: set matrix failed.\n");
                         
                         return 1;
                     }
                     res = max7219_interface_spi_deinit();
-                    if (res)
+                    if (res != 0)
                     {
                         max7219_interface_debug_print("max7219: basic deinit failed.\n");
                         
@@ -424,8 +424,8 @@ uint8_t max7219(uint8_t argc, char **argv)
             {
                 if (strcmp("-matrix", argv[3]) == 0)
                 {
-                    volatile uint8_t res;
-                    volatile uint32_t i, j;
+                    uint8_t res;
+                    uint32_t i, j;
                     
                     if (strcmp("+", argv[4]) == 0)
                     {
@@ -462,14 +462,14 @@ uint8_t max7219(uint8_t argc, char **argv)
                             g_matrix[i][7] = 0x18;
                         }
                         res = max7219_cascade_init();
-                        if (res)
+                        if (res != 0)
                         {
                             max7219_interface_debug_print("max7219: cascade init failed.\n");
                             
                             return 1;
                         }
                         res = max7219_cascade_update();
-                        if (res)
+                        if (res != 0)
                         {
                             max7219_interface_debug_print("max7219: cascade update failed.\n");
                             
@@ -477,7 +477,7 @@ uint8_t max7219(uint8_t argc, char **argv)
                         }
                         max7219_interface_debug_print("max7219: set pattern +.\n");
                         res = max7219_interface_spi_deinit();
-                        if (res)
+                        if (res != 0)
                         {
                             max7219_interface_debug_print("max7219: basic deinit failed.\n");
                             
@@ -503,14 +503,14 @@ uint8_t max7219(uint8_t argc, char **argv)
                             }
                         }
                         res = max7219_cascade_init();
-                        if (res)
+                        if (res != 0)
                         {
                             max7219_interface_debug_print("max7219: cascade init failed.\n");
                             
                             return 1;
                         }
                         res = max7219_cascade_update();
-                        if (res)
+                        if (res != 0)
                         {
                             max7219_interface_debug_print("max7219: cascade update failed.\n");
                             
@@ -518,7 +518,7 @@ uint8_t max7219(uint8_t argc, char **argv)
                         }
                         max7219_interface_debug_print("max7219: set pattern -.\n");
                         res = max7219_interface_spi_deinit();
-                        if (res)
+                        if (res != 0)
                         {
                             max7219_interface_debug_print("max7219: basic deinit failed.\n");
                             
@@ -537,14 +537,14 @@ uint8_t max7219(uint8_t argc, char **argv)
                             }
                         }
                         res = max7219_cascade_init();
-                        if (res)
+                        if (res != 0)
                         {
                             max7219_interface_debug_print("max7219: cascade init failed.\n");
                             
                             return 1;
                         }
                         res = max7219_cascade_update();
-                        if (res)
+                        if (res != 0)
                         {
                             max7219_interface_debug_print("max7219: cascade update failed.\n");
                             
@@ -552,7 +552,7 @@ uint8_t max7219(uint8_t argc, char **argv)
                         }
                         max7219_interface_debug_print("max7219: set pattern |.\n");
                         res = max7219_interface_spi_deinit();
-                        if (res)
+                        if (res != 0)
                         {
                             max7219_interface_debug_print("max7219: basic deinit failed.\n");
                             
