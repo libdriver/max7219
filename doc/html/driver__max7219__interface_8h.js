@@ -1,6 +1,6 @@
 var driver__max7219__interface_8h =
 [
-    [ "max7219_interface_debug_print", "group__max7219__interface__driver.html#ga7c7cc3f7bb7599238a64838ac569083f", null ],
+    [ "max7219_interface_debug_print", "group__max7219__interface__driver.html#gac5a6315dfa6ab9ac85bd015c89bf4c5e", null ],
     [ "max7219_interface_delay_ms", "group__max7219__interface__driver.html#ga9c9afa8b37478af650f3f81591c02761", null ],
     [ "max7219_interface_spi_deinit", "group__max7219__interface__driver.html#ga27666673fe8d3828158c16a401c455f7", null ],
     [ "max7219_interface_spi_init", "group__max7219__interface__driver.html#ga0a0184800ae9bc98a87175a3c788ddef", null ],

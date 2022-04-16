@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver MAX7219
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/max7219/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/max7219/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 MAX7219/MAX7221为紧凑的串行输入/输出共阴极显示驱动器，用于连接微处理器(µP)与8位7段LED数码管显示器、条形图显示器或64个独立的LED。器件内置BCD B码译码器、多路复用扫描电路、段和位驱动器以及存储每位数字的8x8静态RAM。只需一个外部电阻即可设置所有LED的段电流。MAX7221兼容于SPI™、QSPI™以及MICROWIRE™接口，段驱动器带有摆率限制，以降低EMI。便利的4线串行接口可以连接所有通用µP。可对每位数字单独寻址和更新，无需重新写入整个显示器。MAX7219/MAX7221还允许用户为每位数字选择B码译码或非译码方式。器件具有150µA低功耗关断模式、模拟和数字亮度控制、允许用户显示1至8位数字的扫描限制寄存器以及强制点亮所有LED的测试模式。
 
-LibDriver MAX7219是LibDriver推出的MAX7219的全功能驱动，该驱动提供数码管显示，点阵显示，级联显示等功能。
+LibDriver MAX7219是LibDriver推出的MAX7219的全功能驱动，该驱动提供数码管显示，点阵显示，级联显示等功能并且它符合MISRA标准。
 
 ### 目录
 
@@ -57,10 +57,10 @@ const max7219_no_decode_font_t display[] = {MAX7219_NO_DECODE_FONT_0, MAX7219_NO
                                             MAX7219_NO_DECODE_FONT_2, MAX7219_NO_DECODE_FONT_3,
                                             MAX7219_NO_DECODE_FONT_4, MAX7219_NO_DECODE_FONT_5,
                                             MAX7219_NO_DECODE_FONT_6, MAX7219_NO_DECODE_FONT_7,
-                                            MAX7219_NO_DECODE_FONT_8, MAX7219_NO_DECODE_FONT_9
+                                            MAX7219_NO_DECODE_FONT_8, MAX7219_NO_DECODE_FONT_9 };
 
 res = max7219_basic_init();
-if (res)
+if (res != 0)
 {
     max7219_interface_debug_print("max7219: basic init failed.\n");
 
@@ -75,7 +75,7 @@ for (i = 0; i < 8; i++)
 
     s = 1;
     res = max7219_basic_set_display((max7219_digital_t)(i + 1), display[s]);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
 
@@ -88,7 +88,7 @@ for (i = 0; i < 8; i++)
                                             
 ...                                            
                                             
-max7219_basic_deinit();
+(void)max7219_basic_deinit();
 
 return 0
 ```
@@ -96,11 +96,11 @@ return 0
 #### example cascade
 
 ```C
-volatile uint8_t res;
-uint8_t matrix[8];
+uint8_t res;
+uint16_t i, j;
 
 res = max7219_cascade_init();
-if (res)
+if (res != 0)
 {
     max7219_interface_debug_print("max7219: cascade init failed.\n");
 
@@ -109,37 +109,31 @@ if (res)
 
 ...
     
-/**
- *            bit7 bit6 bit5 bit4 bit3 bit2 bit1 bit0
- * matrix[7]   0    0     0   1    1    0    0    0     line7
- * matrix[6]   0    0     0   1    1    0    0    0     line6
- * matrix[5]   0    0     0   1    1    0    0    0     line5
- * matrix[4]   1    1     1   1    1    1    1    1     line4
- * matrix[3]   1    1     1   1    1    1    1    1     line3
- * matrix[2]   0    0     0   1    1    0    0    0     line2
- * matrix[1]   0    0     0   1    1    0    0    0     line1
- * matrix[0]   0    0     0   1    1    0    0    0     line0
- */
-matrix[0] = 0x18;
-matrix[1] = 0x18;
-matrix[2] = 0x18;
-matrix[3] = 0xFF;
-matrix[4] = 0xFF;
-matrix[5] = 0x18;
-matrix[6] = 0x18;
-matrix[7] = 0x18;
-
-res = max7219_basic_set_matrix(matrix);
-if (res)
+for (j = 0; j < 8; j++)
 {
-    max7219_interface_debug_print("max7219: set matrix failed.\n");
+    for (i = 0; i < MATRIX_CASCADE_LENGTH; i++)
+    {
+        if ((j % 2) != 0)
+        {
+            g_matrix[i][j] = 0xFF;
+        }
+        else
+        {
+            g_matrix[i][j] = 0x00;
+        }
+    }
+}
+res = max7219_cascade_update();
+if (res != 0)
+{
+    max7219_interface_debug_print("max7219: cascade update failed.\n");
 
     return 1;
 }
 
 ...
 
-max7219_cascade_deinit();
+(void)max7219_cascade_deinit();
 
 return 0;
 ```

@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_MAX7219_CASCADE_H_
-#define _DRIVER_MAX7219_CASCADE_H_
+#ifndef DRIVER_MAX7219_CASCADE_H
+#define DRIVER_MAX7219_CASCADE_H
 
 #include "driver_max7219_interface.h"
 

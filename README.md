@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver MAX7219
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/max7219/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/max7219/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 The MAX7219/MAX7221 are compact, serial input/output common-cathode display drivers that interface microprocessors (μPs) to 7-segment numeric LED displays of up to 8 digits, bar-graph displays, or 64 individual LEDs. Included on-chip are a BCD code-B decoder, multiplex scan circuitry, segment and digit drivers, and an 8x8 static RAM that stores each digit. Only one external resistor is required to set the segment current for all LEDs. The MAX7221 is compatible with SPI™, QSPI™, and MICROWIRE™, and has slewrate-limited segment drivers to reduce EMI. A convenient 4-wire serial interface connects to all common μPs. Individual digits may be addressed and updated without rewriting the entire display. The MAX7219/MAX7221 also allow the user to select code-B decoding or no-decode for each digit. The devices include a 150μA low-power shutdown mode, analog and digital brightness control, a scanlimit register that allows the user to display from 1 to 8 digits, and a test mode that forces all LEDs on.
 
-LibDriver MAX7219 is the full function driver of MAX7219 launched by LibDriver.It provides digital tube display, dot matrix display, cascade display and other functions.
+LibDriver MAX7219 is the full function driver of MAX7219 launched by LibDriver.It provides digital tube display, dot matrix display, cascade display and other functions. LibDriver is MISRA compliant.
 
 ### Table of Contents
 
@@ -57,10 +57,10 @@ const max7219_no_decode_font_t display[] = {MAX7219_NO_DECODE_FONT_0, MAX7219_NO
                                             MAX7219_NO_DECODE_FONT_2, MAX7219_NO_DECODE_FONT_3,
                                             MAX7219_NO_DECODE_FONT_4, MAX7219_NO_DECODE_FONT_5,
                                             MAX7219_NO_DECODE_FONT_6, MAX7219_NO_DECODE_FONT_7,
-                                            MAX7219_NO_DECODE_FONT_8, MAX7219_NO_DECODE_FONT_9
+                                            MAX7219_NO_DECODE_FONT_8, MAX7219_NO_DECODE_FONT_9 };
 
 res = max7219_basic_init();
-if (res)
+if (res != 0)
 {
     max7219_interface_debug_print("max7219: basic init failed.\n");
 
@@ -75,7 +75,7 @@ for (i = 0; i < 8; i++)
 
     s = 1;
     res = max7219_basic_set_display((max7219_digital_t)(i + 1), display[s]);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
 
@@ -88,7 +88,7 @@ for (i = 0; i < 8; i++)
                                             
 ...                                            
                                             
-max7219_basic_deinit();
+(void)max7219_basic_deinit();
 
 return 0
 ```
@@ -96,11 +96,11 @@ return 0
 #### example cascade
 
 ```C
-volatile uint8_t res;
-uint8_t matrix[8];
+uint8_t res;
+uint16_t i, j;
 
 res = max7219_cascade_init();
-if (res)
+if (res != 0)
 {
     max7219_interface_debug_print("max7219: cascade init failed.\n");
 
@@ -109,37 +109,31 @@ if (res)
 
 ...
     
-/**
- *            bit7 bit6 bit5 bit4 bit3 bit2 bit1 bit0
- * matrix[7]   0    0     0   1    1    0    0    0     line7
- * matrix[6]   0    0     0   1    1    0    0    0     line6
- * matrix[5]   0    0     0   1    1    0    0    0     line5
- * matrix[4]   1    1     1   1    1    1    1    1     line4
- * matrix[3]   1    1     1   1    1    1    1    1     line3
- * matrix[2]   0    0     0   1    1    0    0    0     line2
- * matrix[1]   0    0     0   1    1    0    0    0     line1
- * matrix[0]   0    0     0   1    1    0    0    0     line0
- */
-matrix[0] = 0x18;
-matrix[1] = 0x18;
-matrix[2] = 0x18;
-matrix[3] = 0xFF;
-matrix[4] = 0xFF;
-matrix[5] = 0x18;
-matrix[6] = 0x18;
-matrix[7] = 0x18;
-
-res = max7219_basic_set_matrix(matrix);
-if (res)
+for (j = 0; j < 8; j++)
 {
-    max7219_interface_debug_print("max7219: set matrix failed.\n");
+    for (i = 0; i < MATRIX_CASCADE_LENGTH; i++)
+    {
+        if ((j % 2) != 0)
+        {
+            g_matrix[i][j] = 0xFF;
+        }
+        else
+        {
+            g_matrix[i][j] = 0x00;
+        }
+    }
+}
+res = max7219_cascade_update();
+if (res != 0)
+{
+    max7219_interface_debug_print("max7219: cascade update failed.\n");
 
     return 1;
 }
 
 ...
 
-max7219_cascade_deinit();
+(void)max7219_cascade_deinit();
 
 return 0;
 ```

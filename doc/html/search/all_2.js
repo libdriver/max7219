@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_4',['data',['../structmax7219__cascade__s.html#a325819a8e492ac69542e8b31705af6e9',1,'max7219_cascade_s']]],
-  ['debug_5fprint_5',['debug_print',['../structmax7219__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2',1,'max7219_handle_s']]],
+  ['debug_5fprint_5',['debug_print',['../structmax7219__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b',1,'max7219_handle_s']]],
   ['delay_5fms_6',['delay_ms',['../structmax7219__handle__s.html#ad87b4d90c8bdad445cdec93dae9455d6',1,'max7219_handle_s']]],
   ['driver_5fmax7219_2ec_7',['driver_max7219.c',['../driver__max7219_8c.html',1,'']]],
   ['driver_5fmax7219_2eh_8',['driver_max7219.h',['../driver__max7219_8h.html',1,'']]],

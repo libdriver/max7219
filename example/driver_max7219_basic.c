@@ -48,7 +48,7 @@ static max7219_handle_t gs_handle;        /**< max7219 handle */
  */
 uint8_t max7219_basic_init(void)
 {
-    volatile uint8_t res; 
+    uint8_t res; 
     
     /* link functions */
     DRIVER_MAX7219_LINK_INIT(&gs_handle, max7219_handle_t);
@@ -61,7 +61,7 @@ uint8_t max7219_basic_init(void)
     
     /* max7219 init */
     res = max7219_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: init failed.\n");
         
@@ -70,50 +70,50 @@ uint8_t max7219_basic_init(void)
     
     /* max7219 set default decode */
     res = max7219_set_decode(&gs_handle, MAX7219_BASIC_DEFAULT_DECODE);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set decode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     
     /* max7219 set default mode */
     res = max7219_set_mode(&gs_handle, MAX7219_BASIC_DEFAULT_MODE);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set mode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     
     /* max7219 set default display test mode */
     res = max7219_set_display_test_mode(&gs_handle, MAX7219_BASIC_DEFAULT_TEST_MODE);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display test mode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     
     /* max7219 set default intensity */
     res = max7219_set_intensity(&gs_handle, MAX7219_BASIC_DEFAULT_INTENSITY);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set intensity failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     
     /* max7219 set default scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_BASIC_DEFAULT_SCAN_LIMIT);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -132,7 +132,7 @@ uint8_t max7219_basic_init(void)
 uint8_t max7219_basic_set_matrix(uint8_t matrix[8])
 {
     /* set matrix */
-    if (max7219_set_matrix(&gs_handle, matrix))
+    if (max7219_set_matrix(&gs_handle, matrix) != 0)
     {
         return 1;
     }
@@ -154,7 +154,7 @@ uint8_t max7219_basic_set_matrix(uint8_t matrix[8])
 uint8_t max7219_basic_set_display(max7219_digital_t digital, uint8_t data)
 {
     /* set display */
-    if (max7219_set_display(&gs_handle, digital, data))
+    if (max7219_set_display(&gs_handle, digital, data) != 0)
     {
         return 1;
     }
@@ -174,7 +174,7 @@ uint8_t max7219_basic_set_display(max7219_digital_t digital, uint8_t data)
 uint8_t max7219_basic_deinit(void)
 {
     /* close max7219 */
-    if (max7219_deinit(&gs_handle))
+    if (max7219_deinit(&gs_handle) != 0)
     {
         return 1;
     }

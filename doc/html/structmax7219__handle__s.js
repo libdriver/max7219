@@ -1,7 +1,7 @@
 var structmax7219__handle__s =
 [
     [ "buf", "structmax7219__handle__s.html#ac8584c4d149ffbc53e025d923b2b142e", null ],
-    [ "debug_print", "structmax7219__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2", null ],
+    [ "debug_print", "structmax7219__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b", null ],
     [ "delay_ms", "structmax7219__handle__s.html#ad87b4d90c8bdad445cdec93dae9455d6", null ],
     [ "inited", "structmax7219__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f", null ],
     [ "spi_deinit", "structmax7219__handle__s.html#a9adb2481330acacfd7f6a04ce3310fab", null ],

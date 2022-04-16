@@ -48,7 +48,7 @@ static max7219_handle_t gs_handle;        /**< max7219 handle */
  */
 uint8_t max7219_display_test(void)
 {
-    volatile uint8_t res; 
+    uint8_t res; 
     max7219_info_t info;
     
     /* link functions */
@@ -62,7 +62,7 @@ uint8_t max7219_display_test(void)
     
     /* max7219 info */
     res = max7219_info(&info);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: get info failed.\n");
        
@@ -87,7 +87,7 @@ uint8_t max7219_display_test(void)
     
     /* max7219 init */
     res = max7219_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: init failed.\n");
         
@@ -96,50 +96,50 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_SCAN_LIMIT_DIGIT_0_7);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     
     /* max7219 set intensity */
     res = max7219_set_intensity(&gs_handle, MAX7219_INTENSITY_31_32);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set intensity failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     
     /* max7219 set display test mode */
     res = max7219_set_display_test_mode(&gs_handle, MAX7219_DISPLAY_TEST_MODE_OFF);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display test mode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     
     /* max7219 set decode */
     res = max7219_set_decode(&gs_handle, MAX7219_DECODE_CODEB_DIGITS_NONE);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set decode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     
     /* max7219 set mode */
     res = max7219_set_mode(&gs_handle, MAX7219_MODE_NORMAL);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set mode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -149,10 +149,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set display test mode */
     res = max7219_set_display_test_mode(&gs_handle, MAX7219_DISPLAY_TEST_MODE_ON);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display test mode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -162,10 +162,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set display test mode */
     res = max7219_set_display_test_mode(&gs_handle, MAX7219_DISPLAY_TEST_MODE_OFF);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display test mode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -175,74 +175,74 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set decode */
     res = max7219_set_decode(&gs_handle, MAX7219_DECODE_CODEB_DIGITS_7_0);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set decode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_0, MAX7219_CODEB_FONT_0|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_1, MAX7219_CODEB_FONT_1);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_2, MAX7219_CODEB_FONT_2|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_3, MAX7219_CODEB_FONT_3);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_4, MAX7219_CODEB_FONT_4|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_5, MAX7219_CODEB_FONT_5);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_6, MAX7219_CODEB_FONT_6|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_7, MAX7219_CODEB_FONT_7);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -250,66 +250,66 @@ uint8_t max7219_display_test(void)
     /* delay 3000 ms */
     max7219_interface_delay_ms(3000);
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_0, MAX7219_CODEB_FONT_8|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_1, MAX7219_CODEB_FONT_9);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_2, MAX7219_CODEB_FONT_LINE|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_3, MAX7219_CODEB_FONT_E);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_4, MAX7219_CODEB_FONT_H|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_5, MAX7219_CODEB_FONT_L);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_6, MAX7219_CODEB_FONT_P|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_7, MAX7219_CODEB_FONT_BLACK);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -322,74 +322,74 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set decode */
     res = max7219_set_decode(&gs_handle, MAX7219_DECODE_CODEB_DIGITS_NONE);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set decode failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_0, MAX7219_NO_DECODE_FONT_0);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_1, MAX7219_NO_DECODE_FONT_1|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_2, MAX7219_NO_DECODE_FONT_2);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_3, MAX7219_NO_DECODE_FONT_3|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_4, MAX7219_NO_DECODE_FONT_4);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_5, MAX7219_NO_DECODE_FONT_5|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_6, MAX7219_NO_DECODE_FONT_6);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_7, MAX7219_NO_DECODE_FONT_7|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -397,66 +397,66 @@ uint8_t max7219_display_test(void)
     /* delay 3000 ms */
     max7219_interface_delay_ms(3000);
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_0, MAX7219_NO_DECODE_FONT_8);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_1, MAX7219_NO_DECODE_FONT_9|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_2, MAX7219_NO_DECODE_FONT_LINE);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_3, MAX7219_NO_DECODE_FONT_E|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_4, MAX7219_NO_DECODE_FONT_H);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_5, MAX7219_NO_DECODE_FONT_L|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_6, MAX7219_NO_DECODE_FONT_P);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
     res = max7219_set_display(&gs_handle, MAX7219_DIGITAL_7, MAX7219_NO_DECODE_FONT_BLACK|MAX7219_SEGMENT_DP);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set display failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -472,10 +472,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set intensity */
     res = max7219_set_intensity(&gs_handle, MAX7219_INTENSITY_31_32);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set intensity failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -488,10 +488,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set intensity */
     res = max7219_set_intensity(&gs_handle, MAX7219_INTENSITY_21_32);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set intensity failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -504,10 +504,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set intensity */
     res = max7219_set_intensity(&gs_handle, MAX7219_INTENSITY_11_32);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set intensity failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -520,10 +520,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set intensity */
     res = max7219_set_intensity(&gs_handle, MAX7219_INTENSITY_1_32);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set intensity failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -533,10 +533,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set intensity */
     res = max7219_set_intensity(&gs_handle, MAX7219_INTENSITY_31_32);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set intensity failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -549,10 +549,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_SCAN_LIMIT_DIGIT_0_7);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -565,10 +565,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_SCAN_LIMIT_DIGIT_0_6);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -581,10 +581,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_SCAN_LIMIT_DIGIT_0_5);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -597,10 +597,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_SCAN_LIMIT_DIGIT_0_4);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -613,10 +613,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_SCAN_LIMIT_DIGIT_0_3);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -629,10 +629,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_SCAN_LIMIT_DIGIT_0_2);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -645,10 +645,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_SCAN_LIMIT_DIGIT_0_1);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -661,10 +661,10 @@ uint8_t max7219_display_test(void)
     
     /* max7219 set scan limit */
     res = max7219_set_scan_limit(&gs_handle, MAX7219_SCAN_LIMIT_DIGIT_0_0);
-    if (res)
+    if (res != 0)
     {
         max7219_interface_debug_print("max7219: set scan limit failed.\n");
-        max7219_deinit(&gs_handle);
+        (void)max7219_deinit(&gs_handle);
         
         return 1;
     }
@@ -674,7 +674,7 @@ uint8_t max7219_display_test(void)
     
     /* finish display test */
     max7219_interface_debug_print("max7219: finish display test.\n");
-    max7219_deinit(&gs_handle);
+    (void)max7219_deinit(&gs_handle);
     
     return 0;
 }
