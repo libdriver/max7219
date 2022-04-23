@@ -173,8 +173,6 @@ uint8_t max7219_cascade_update(void)
         res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_LENGTH);
         if (res != 0)
         {
-            max7219_interface_debug_print("max7219: set display test off failed.\n");
-            
             return 1;
         }
     }
@@ -203,15 +201,11 @@ uint8_t max7219_cascade_deinit(void)
     res = max7219_set_cascade(&gs_handle, (max7219_cascade_t *)gs_cascade, MATRIX_CASCADE_LENGTH);
     if (res != 0)
     {
-        max7219_interface_debug_print("max7219: set cascade failed.\n");
-        
         return 1;
     }
     res = max7219_deinit(&gs_handle);
     if (res != 0)
     {
-        max7219_interface_debug_print("max7219: deinit failed.\n");
-        
         return 1;
     }
     
