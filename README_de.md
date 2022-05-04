@@ -27,15 +27,15 @@ LibDriver MAX7219 ist der Vollfunktionstreiber von MAX7219, der von LibDriver ei
 
 /src enthält LibDriver MAX7219-Quelldateien.
 
-/interface enthält die plattformunabhängige Vorlage LibDriver MAX7219 SPI。
+/interface enthält die plattformunabhängige Vorlage LibDriver MAX7219 SPI.
 
-/test enthält den Testcode des LibDriver MAX7219-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen。
+/test enthält den Testcode des LibDriver MAX7219-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen.
 
 /example enthält LibDriver MAX7219-Beispielcode.
 
 /doc enthält das LibDriver MAX7219-Offlinedokument.
 
-/Datenblatt enthält MAX7219-Datenblatt。
+/Datenblatt enthält MAX7219-Datenblatt.
 
 /project enthält den allgemeinen Beispielcode für Linux- und MCU-Entwicklungsboards. Alle Projekte verwenden das Shell-Skript, um den Treiber zu debuggen, und die detaillierten Anweisungen finden Sie in der README.md jedes Projekts.
 
