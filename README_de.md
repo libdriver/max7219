@@ -50,6 +50,8 @@ Fügen Sie /src, /interface und /example zu Ihrem Projekt hinzu.
 #### example basic
 
 ```C
+#include "driver_max7219_basic.h"
+
 uint8_t i;
 uint8_t res;
 const max7219_no_decode_font_t display[] = {MAX7219_NO_DECODE_FONT_0, MAX7219_NO_DECODE_FONT_1,
@@ -95,6 +97,8 @@ return 0
 #### example cascade
 
 ```c
+#include "driver_max7219_cascade.h"
+
 uint8_t res;
 uint16_t i, j;
 

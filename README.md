@@ -28,15 +28,15 @@ LibDriver MAX7219 is the full function driver of MAX7219 launched by LibDriver.I
 
 /src includes LibDriver MAX7219 source files.
 
-/interface includes LibDriver MAX7219 SPI platform independent template。
+/interface includes LibDriver MAX7219 SPI platform independent template.
 
-/test includes LibDriver MAX7219 driver test code and this code can test the chip necessary function simply。
+/test includes LibDriver MAX7219 driver test code and this code can test the chip necessary function simply.
 
 /example includes LibDriver MAX7219 sample code.
 
 /doc includes LibDriver MAX7219 offline document.
 
-/datasheet includes MAX7219 datasheet。
+/datasheet includes MAX7219 datasheet.
 
 /project includes the common Linux and MCU development board sample code. All projects use the shell script to debug the driver and the detail instruction can be found in each project's README.md.
 
@@ -51,6 +51,8 @@ Add /src, /interface and /example to your project.
 #### example basic
 
 ```C
+#include "driver_max7219_basic.h"
+
 uint8_t i;
 uint8_t res;
 const max7219_no_decode_font_t display[] = {MAX7219_NO_DECODE_FONT_0, MAX7219_NO_DECODE_FONT_1,
@@ -96,6 +98,8 @@ return 0
 #### example cascade
 
 ```C
+#include "driver_max7219_cascade.h"
+
 uint8_t res;
 uint16_t i, j;
 
