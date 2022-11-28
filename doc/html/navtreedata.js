@@ -24,8 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "LidDriver MAX7219", "index.html", [
-    [ "LibDriver MAX7219", "index.html", null ],
+  [ "LibDriver MAX7219", "index.html", [
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
