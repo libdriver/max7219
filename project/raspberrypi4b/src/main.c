@@ -69,7 +69,7 @@ uint8_t max7219(uint8_t argc, char **argv)
         {"number", required_argument, NULL, 2},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     char num[9] = {0};
     char mat[2] = {0};
     uint8_t num_flag = 0;
@@ -426,7 +426,7 @@ uint8_t max7219(uint8_t argc, char **argv)
             return 1;
         }
         
-        /* spid deinit */
+        /* spi deinit */
         res = max7219_interface_spi_deinit();
         if (res != 0)
         {
@@ -759,7 +759,7 @@ int main(uint8_t argc, char **argv)
     }
     else
     {
-        max7219_interface_debug_print("max7219: unknow status code.\n");
+        max7219_interface_debug_print("max7219: unknown status code.\n");
     }
 
     return 0;

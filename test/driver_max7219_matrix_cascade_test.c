@@ -157,7 +157,7 @@ uint8_t max7219_matrix_cascade_test(void)
         return 1;
     }
     
-    /* set powen on */
+    /* set power on */
     for (i = 0; i < MATRIX_CASCADE_TEST_LENGTH; i++)
     {
         gs_cascade[i].command = MAX7219_CASCADE_COMMAND_SHUT_DOWN;
@@ -172,7 +172,7 @@ uint8_t max7219_matrix_cascade_test(void)
         return 1;
     }
     
-    /* set rows diplay */
+    /* set rows display */
     max7219_interface_debug_print("max7219: set rows display.\n");
     for (j = 0; j < 8; j++)
     {
