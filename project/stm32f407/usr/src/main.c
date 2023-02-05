@@ -78,7 +78,7 @@ uint8_t max7219(uint8_t argc, char **argv)
         {"number", required_argument, NULL, 2},
         {NULL, 0, NULL, 0},
     };
-    char type[32] = "unknow";
+    char type[32] = "unknown";
     char num[9] = {0};
     char mat[2] = {0};
     uint8_t num_flag = 0;
@@ -632,7 +632,7 @@ int main(void)
     /* uart init */
     uart_init(115200);
     
-    /* shell init && register max7219 fuction */
+    /* shell init && register max7219 function */
     shell_init();
     shell_register("max7219", max7219);
     uart_print("max7219: welcome to libdriver max7219.\n");
@@ -655,7 +655,7 @@ int main(void)
             }
             else if (res == 2)
             {
-                uart_print("max7219: unknow command.\n");
+                uart_print("max7219: unknown command.\n");
             }
             else if (res == 3)
             {
@@ -671,7 +671,7 @@ int main(void)
             }
             else
             {
-                uart_print("max7219: unknow status code.\n");
+                uart_print("max7219: unknown status code.\n");
             }
             uart_flush();
         }
