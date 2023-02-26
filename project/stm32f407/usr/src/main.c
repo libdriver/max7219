@@ -74,7 +74,7 @@ uint8_t max7219(uint8_t argc, char **argv)
         {"port", no_argument, NULL, 'p'},
         {"example", required_argument, NULL, 'e'},
         {"test", required_argument, NULL, 't'},
-        {"matirx", required_argument, NULL, 1},
+        {"matrix", required_argument, NULL, 1},
         {"number", required_argument, NULL, 2},
         {NULL, 0, NULL, 0},
     };
@@ -153,10 +153,10 @@ uint8_t max7219(uint8_t argc, char **argv)
                 break;
             }
             
-            /* matirx */
+            /* matrix */
             case 1 :
             {
-                /* set the matirx */
+                /* set the matrix */
                 if (strcmp("+", optarg) == 0)
                 {
                     mat[0] = '+';
@@ -328,7 +328,7 @@ uint8_t max7219(uint8_t argc, char **argv)
         
         return 0;
     }
-    else if (strcmp("e_basic-matirx", type) == 0)
+    else if (strcmp("e_basic-matrix", type) == 0)
     {
         uint8_t res;
         uint8_t matrix[8];
@@ -428,7 +428,7 @@ uint8_t max7219(uint8_t argc, char **argv)
         
         return 0;
     }
-    else if (strcmp("e_cascade-matirx", type) == 0)
+    else if (strcmp("e_cascade-matrix", type) == 0)
     {
         uint8_t res;
         uint32_t i;
@@ -561,19 +561,19 @@ uint8_t max7219(uint8_t argc, char **argv)
         max7219_interface_debug_print("  max7219 (-e basic-init | --example=basic-init)\n");
         max7219_interface_debug_print("  max7219 (-e basic-deinit | --example=basic-deinit)\n");
         max7219_interface_debug_print("  max7219 (-e basic-num | --example=basic-num) --number=<num>\n");
-        max7219_interface_debug_print("  max7219 (-e basic-matirx | --example=basic-matirx) --matirx=<- | | | +>\n");
+        max7219_interface_debug_print("  max7219 (-e basic-matrix | --example=basic-matrix) --matrix=<- | | | +>\n");
         max7219_interface_debug_print("  max7219 (-e cascade-init | --example=cascade-init)\n");
         max7219_interface_debug_print("  max7219 (-e cascade-deinit | --example=cascade-deinit)\n");
-        max7219_interface_debug_print("  max7219 (-e cascade-matirx | --example=cascade-matirx) --matirx=<- | | | +>\n");
+        max7219_interface_debug_print("  max7219 (-e cascade-matrix | --example=cascade-matrix) --matrix=<- | | | +>\n");
         max7219_interface_debug_print("\n");
         max7219_interface_debug_print("Options:\n");
-        max7219_interface_debug_print("  -e <basic-init | basic-deinit | basic-num | basic-matirx | cascade-init | cascade-deinit\n");
-        max7219_interface_debug_print("     | cascade-matirx>, --example=<basic-init | basic-deinit | basic-num | basic-matirx\n");
-        max7219_interface_debug_print("     | cascade-init | cascade-deinit | cascade-matirx>\n");
+        max7219_interface_debug_print("  -e <basic-init | basic-deinit | basic-num | basic-matrix | cascade-init | cascade-deinit\n");
+        max7219_interface_debug_print("     | cascade-matrix>, --example=<basic-init | basic-deinit | basic-num | basic-matrix\n");
+        max7219_interface_debug_print("     | cascade-init | cascade-deinit | cascade-matrix>\n");
         max7219_interface_debug_print("                                    Run the driver example.\n");
         max7219_interface_debug_print("  -h, --help                        Show the help.\n");
         max7219_interface_debug_print("  -i, --information                 Show the chip information.\n");
-        max7219_interface_debug_print("      --matirx=<- | | | +>          Set the matrix pattern.\n");
+        max7219_interface_debug_print("      --matrix=<- | | | +>          Set the matrix pattern.\n");
         max7219_interface_debug_print("      --number=<num>                Set the display number, number length must be 8\n");
         max7219_interface_debug_print("                                    and each number can be \"0\" - \"9\"\n");
         max7219_interface_debug_print("  -p, --port                        Display the pin connections of the current board.\n");

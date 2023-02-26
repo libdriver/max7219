@@ -123,10 +123,10 @@ find_package(max7219 REQUIRED)
    max7219 (-e basic-num | --example=basic-num) --number=<num>
    ```
 
-9. Run max7219 basic matirx display function.
+9. Run max7219 basic matrix display function.
 
    ```shell
-   max7219 (-e basic-matirx | --example=basic-matirx) --matirx=<- | | | +>
+   max7219 (-e basic-matrix | --example=basic-matrix) --matrix=<- | | | +>
    ```
 
 10. Run max7219 cascade init function.
@@ -141,10 +141,10 @@ find_package(max7219 REQUIRED)
     max7219 (-e cascade-deinit | --example=cascade-deinit)
     ```
 
-12. Run max7219 cascade matirx display function.
+12. Run max7219 cascade matrix display function.
 
     ```shell
-    max7219 (-e cascade-matirx | --example=cascade-matirx) --matirx=<- | | | +>
+    max7219 (-e cascade-matrix | --example=cascade-matrix) --matrix=<- | | | +>
     ```
 
 #### 3.2 Command Example
@@ -244,7 +244,7 @@ max7219: set display 12345678.
 ```
 
 ```shell
-./max7219 -e basic-matirx --matirx=+
+./max7219 -e basic-matrix --matrix=+
 
 max7219: set pattern +.
 ```
@@ -262,7 +262,7 @@ max7219: deinit successful.
 ```
 
 ```shell
-./max7219 -e cascade-matirx --matirx=+
+./max7219 -e cascade-matrix --matrix=+
 
 max7219: set pattern +.
 ```
@@ -279,19 +279,19 @@ Usage:
   max7219 (-e basic-init | --example=basic-init)
   max7219 (-e basic-deinit | --example=basic-deinit)
   max7219 (-e basic-num | --example=basic-num) --number=<num>
-  max7219 (-e basic-matirx | --example=basic-matirx) --matirx=<- | | | +>
+  max7219 (-e basic-matrix | --example=basic-matrix) --matrix=<- | | | +>
   max7219 (-e cascade-init | --example=cascade-init)
   max7219 (-e cascade-deinit | --example=cascade-deinit)
-  max7219 (-e cascade-matirx | --example=cascade-matirx) --matirx=<- | | | +>
+  max7219 (-e cascade-matrix | --example=cascade-matrix) --matrix=<- | | | +>
 
 Options:
-  -e <basic-init | basic-deinit | basic-num | basic-matirx | cascade-init | cascade-deinit
-     | cascade-matirx>, --example=<basic-init | basic-deinit | basic-num | basic-matirx
-     | cascade-init | cascade-deinit | cascade-matirx>
+  -e <basic-init | basic-deinit | basic-num | basic-matrix | cascade-init | cascade-deinit
+     | cascade-matrix>, --example=<basic-init | basic-deinit | basic-num | basic-matrix
+     | cascade-init | cascade-deinit | cascade-matrix>
                                     Run the driver example.
   -h, --help                        Show the help.
   -i, --information                 Show the chip information.
-      --matirx=<- | | | +>          Set the matrix pattern.
+      --matrix=<- | | | +>          Set the matrix pattern.
       --number=<num>                Set the display number, number length must be 8
                                     and each number can be "0" - "9"
   -p, --port                        Display the pin connections of the current board.

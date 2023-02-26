@@ -88,7 +88,7 @@ We use '\n' to wrap lines.If your serial port assistant displays exceptions (e.g
    max7219 (-e basic-num | --example=basic-num) --number=<num>
    ```
 
-9. Run max7219 basic matirx display function.
+9. Run max7219 basic matrix display function.
 
    ```shell
    max7219 (-e basic-matirx | --example=basic-matirx) --matirx=<- | | | +>
