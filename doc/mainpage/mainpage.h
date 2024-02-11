@@ -1,6 +1,6 @@
 /**
  * @mainpage  LibDriver MAX7219
- * @brief     libdriver max7219 is a full function driver of max7219 and it can run in both MCU and Linux platform.
+ * @brief     LibDriver MAX7219 is a full function driver of MAX7219 and it can run in both MCU and Linux platform.
  * @version   2.0.0
  * @author    Shifeng Li
  *
