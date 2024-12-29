@@ -123,7 +123,7 @@ uint8_t max7219_basic_init(void)
 
 /**
  * @brief     basic example set the matrix
- * @param[in] *matrix points to a content matrix
+ * @param[in] *matrix pointer to a content matrix
  * @return    status code
  *            - 0 success
  *            - 1 set matrix failed
@@ -144,8 +144,8 @@ uint8_t max7219_basic_set_matrix(uint8_t matrix[8])
 
 /**
  * @brief     basic example set the display
- * @param[in] digital is the set part
- * @param[in] data is the set data
+ * @param[in] digital set part
+ * @param[in] data set data
  * @return    status code
  *            - 0 success
  *            - 1 set display failed

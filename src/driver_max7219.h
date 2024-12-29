@@ -308,56 +308,56 @@ typedef struct max7219_info_s
 
 /**
  * @brief     initialize max7219_handle_t structure
- * @param[in] HANDLE points to a max7219 handle structure
- * @param[in] STRUCTURE is max7219_handle_t
+ * @param[in] HANDLE pointer to a max7219 handle structure
+ * @param[in] STRUCTURE max7219_handle_t
  * @note      none
  */
 #define DRIVER_MAX7219_LINK_INIT(HANDLE, STRUCTURE)          memset(HANDLE, 0, sizeof(STRUCTURE))
 
 /**
  * @brief     link spi_init function
- * @param[in] HANDLE points to a max7219 handle structure
- * @param[in] FUC points to a spi_init function address
+ * @param[in] HANDLE pointer to a max7219 handle structure
+ * @param[in] FUC pointer to a spi_init function address
  * @note      none
  */
 #define DRIVER_MAX7219_LINK_SPI_INIT(HANDLE, FUC)            (HANDLE)->spi_init = FUC
 
 /**
  * @brief     link spi_deinit function
- * @param[in] HANDLE points to a max7219 handle structure
- * @param[in] FUC points to a spi_deinit function address
+ * @param[in] HANDLE pointer to a max7219 handle structure
+ * @param[in] FUC pointer to a spi_deinit function address
  * @note      none
  */
 #define DRIVER_MAX7219_LINK_SPI_DEINIT(HANDLE, FUC)          (HANDLE)->spi_deinit = FUC
 
 /**
  * @brief     link spi_write function
- * @param[in] HANDLE points to a max7219 handle structure
- * @param[in] FUC points to a spi_write function address
+ * @param[in] HANDLE pointer to a max7219 handle structure
+ * @param[in] FUC pointer to a spi_write function address
  * @note      none
  */
 #define DRIVER_MAX7219_LINK_SPI_WRITE(HANDLE, FUC)           (HANDLE)->spi_write = FUC
 
 /**
  * @brief     link spi_write_cmd function
- * @param[in] HANDLE points to a max7219 handle structure
- * @param[in] FUC points to a spi_write_cmd function address
+ * @param[in] HANDLE pointer to a max7219 handle structure
+ * @param[in] FUC pointer to a spi_write_cmd function address
  * @note      none
  */
 #define DRIVER_MAX7219_LINK_SPI_WRITE_COMMAND(HANDLE, FUC)   (HANDLE)->spi_write_cmd = FUC
 
 /**
  * @brief     link delay_ms function
- * @param[in] HANDLE points to a max7219 handle structure
- * @param[in] FUC points to a delay_ms function address
+ * @param[in] HANDLE pointer to a max7219 handle structure
+ * @param[in] FUC pointer to a delay_ms function address
  * @note      none
  */
 #define DRIVER_MAX7219_LINK_DELAY_MS(HANDLE, FUC)            (HANDLE)->delay_ms = FUC
 
 /**
  * @brief     link debug_print function
- * @param[in] HANDLE points to a max7219 handle structure
- * @param[in] FUC points to a debug_print function address
+ * @param[in] HANDLE pointer to a max7219 handle structure
+ * @param[in] FUC pointer to a debug_print function address
  * @note      none
  */
 #define DRIVER_MAX7219_LINK_DEBUG_PRINT(HANDLE, FUC)         (HANDLE)->debug_print = FUC
@@ -375,7 +375,7 @@ typedef struct max7219_info_s
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a max7219 info structure
+ * @param[out] *info pointer to a max7219 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -385,7 +385,7 @@ uint8_t max7219_info(max7219_info_t *info);
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a max7219 handle structure
+ * @param[in] *handle pointer to a max7219 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 spi initialization failed
@@ -397,7 +397,7 @@ uint8_t max7219_init(max7219_handle_t *handle);
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a max7219 handle structure
+ * @param[in] *handle pointer to a max7219 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 spi deinit failed
@@ -410,9 +410,9 @@ uint8_t max7219_deinit(max7219_handle_t *handle);
 
 /**
  * @brief     set the display content
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] digital is the set part
- * @param[in] data is the set data
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] digital set part
+ * @param[in] data set data
  * @return    status code
  *            - 0 success
  *            - 1 set display failed
@@ -424,8 +424,8 @@ uint8_t max7219_set_display(max7219_handle_t *handle, max7219_digital_t digital,
 
 /**
  * @brief     set the content matrix
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] *matrix points to a content matrix
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] *matrix pointer to a content matrix
  * @return    status code
  *            - 0 success
  *            - 1 set matrix failed
@@ -437,8 +437,8 @@ uint8_t max7219_set_matrix(max7219_handle_t *handle, uint8_t matrix[8]);
 
 /**
  * @brief     set the decode mode
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] decode is the decode mode
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] decode decode mode
  * @return    status code
  *            - 0 success
  *            - 1 set decode failed
@@ -450,8 +450,8 @@ uint8_t max7219_set_decode(max7219_handle_t *handle, max7219_decode_t decode);
 
 /**
  * @brief     set the chip mode
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] mode is the chip mode
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] mode chip mode
  * @return    status code
  *            - 0 success
  *            - 1 set mode failed
@@ -463,8 +463,8 @@ uint8_t max7219_set_mode(max7219_handle_t *handle, max7219_mode_t mode);
 
 /**
  * @brief     set the chip mode
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] mode is the chip mode
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] mode chip mode
  * @return    status code
  *            - 0 success
  *            - 1 set mode failed
@@ -476,8 +476,8 @@ uint8_t max7219_set_mode(max7219_handle_t *handle, max7219_mode_t mode);
 
 /**
  * @brief     set the display test mode
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] mode is the display test mode
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] mode display test mode
  * @return    status code
  *            - 0 success
  *            - 1 set display test mode failed
@@ -489,8 +489,8 @@ uint8_t max7219_set_display_test_mode(max7219_handle_t *handle, max7219_display_
 
 /**
  * @brief     set the display intensity
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] intensity is the display intensity
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] intensity display intensity
  * @return    status code
  *            - 0 success
  *            - 1 set intensity failed
@@ -502,8 +502,8 @@ uint8_t max7219_set_intensity(max7219_handle_t *handle, max7219_intensity_t inte
 
 /**
  * @brief     set the scan limit
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] limit is the scan limit
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] limit scan limit
  * @return    status code
  *            - 0 success
  *            - 1 set scan limit failed
@@ -526,9 +526,9 @@ uint8_t max7219_set_scan_limit(max7219_handle_t *handle, max7219_scan_limit_t li
 
 /**
  * @brief     set the cascade data
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] *cascade points to a cascade structure
- * @param[in] len is the cascade length
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] *cascade pointer to a cascade structure
+ * @param[in] len cascade length
  * @return    status code
  *            - 0 success
  *            - 1 set cascade failed
@@ -551,10 +551,10 @@ uint8_t max7219_set_cascade(max7219_handle_t *handle, max7219_cascade_t *cascade
 
 /**
  * @brief     set the chip register
- * @param[in] *handle points to a max7219 handle structure
- * @param[in] reg is the chip register address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the data buffer length
+ * @param[in] *handle pointer to a max7219 handle structure
+ * @param[in] reg chip register address
+ * @param[in] *buf pointer to a data buffer
+ * @param[in] len data buffer length
  * @return    status code
  *            - 0 success
  *            - 1 write failed
