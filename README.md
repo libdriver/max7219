@@ -10,7 +10,7 @@
 
 The MAX7219/MAX7221 are compact, serial input/output common-cathode display drivers that interface microprocessors (μPs) to 7-segment numeric LED displays of up to 8 digits, bar-graph displays, or 64 individual LEDs. Included on-chip are a BCD code-B decoder, multiplex scan circuitry, segment and digit drivers, and an 8x8 static RAM that stores each digit. Only one external resistor is required to set the segment current for all LEDs. The MAX7221 is compatible with SPI™, QSPI™, and MICROWIRE™, and has slewrate-limited segment drivers to reduce EMI. A convenient 4-wire serial interface connects to all common μPs. Individual digits may be addressed and updated without rewriting the entire display. The MAX7219/MAX7221 also allow the user to select code-B decoding or no-decode for each digit. The devices include a 150μA low-power shutdown mode, analog and digital brightness control, a scanlimit register that allows the user to display from 1 to 8 digits, and a test mode that forces all LEDs on.
 
-LibDriver MAX7219 is a full-featured driver of MAX7219 launched by LibDriver.It provides digital tube display, dot matrix display, cascade display and other functions. LibDriver is MISRA compliant.
+LibDriver MAX7219 is a full-featured driver for MAX7219, launched by LibDriver.It provides digital tube display, dot matrix display, cascade display and additional features. LibDriver is MISRA compliant.
 
 ### Table of Contents
 
