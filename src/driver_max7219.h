@@ -273,7 +273,7 @@ typedef struct max7219_handle_s
     uint8_t (*spi_deinit)(void);                                          /**< point to a spi_deinit function address */
     uint8_t (*spi_write_cmd)(uint8_t *buf, uint16_t len);                 /**< point to a spi_write_cmd function address */
     uint8_t (*spi_write)(uint8_t reg, uint8_t *buf, uint16_t len);        /**< point to a spi_write function address */
-    void (*delay_ms)(uint32_t us);                                        /**< point to a delay_ms function address */
+    void (*delay_ms)(uint32_t ms);                                        /**< point to a delay_ms function address */
     void (*debug_print)(const char *const fmt, ...);                      /**< point to a debug_print function address */
     uint8_t buf[MAX7219_MAX_CASCADE_SIZE * 2];                            /**< cascade buffer */
     uint8_t inited;                                                       /**< inited flag */
@@ -447,19 +447,6 @@ uint8_t max7219_set_matrix(max7219_handle_t *handle, uint8_t matrix[8]);
  * @note      none
  */
 uint8_t max7219_set_decode(max7219_handle_t *handle, max7219_decode_t decode);
-
-/**
- * @brief     set the chip mode
- * @param[in] *handle pointer to a max7219 handle structure
- * @param[in] mode chip mode
- * @return    status code
- *            - 0 success
- *            - 1 set mode failed
- *            - 2 handle is NULL
- *            - 3 handle is not initialized
- * @note      none
- */
-uint8_t max7219_set_mode(max7219_handle_t *handle, max7219_mode_t mode);
 
 /**
  * @brief     set the chip mode
