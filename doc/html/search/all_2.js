@@ -2,7 +2,7 @@ var searchData=
 [
   ['data_0',['data',['../structmax7219__cascade__s.html#a325819a8e492ac69542e8b31705af6e9',1,'max7219_cascade_s']]],
   ['debug_5fprint_1',['debug_print',['../structmax7219__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b',1,'max7219_handle_s']]],
-  ['delay_5fms_2',['delay_ms',['../structmax7219__handle__s.html#ad87b4d90c8bdad445cdec93dae9455d6',1,'max7219_handle_s']]],
+  ['delay_5fms_2',['delay_ms',['../structmax7219__handle__s.html#a406c9433252b7366de417b7a60915c81',1,'max7219_handle_s']]],
   ['driver_20function_3',['driver function',['../group__max7219__base__driver.html',1,'max7219 base driver function'],['../group__max7219__cascade__driver.html',1,'max7219 cascade driver function'],['../group__max7219__driver.html',1,'max7219 driver function'],['../group__max7219__example__driver.html',1,'max7219 example driver function'],['../group__max7219__extern__driver.html',1,'max7219 extern driver function'],['../group__max7219__interface__driver.html',1,'max7219 interface driver function'],['../group__max7219__link__driver.html',1,'max7219 link driver function'],['../group__max7219__test__driver.html',1,'max7219 test driver function']]],
   ['driver_5fmax7219_2ec_4',['driver_max7219.c',['../driver__max7219_8c.html',1,'']]],
   ['driver_5fmax7219_2eh_5',['driver_max7219.h',['../driver__max7219_8h.html',1,'']]],
